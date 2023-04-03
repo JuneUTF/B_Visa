@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.visa.kigen.mapper.UpdateMapper">
+    <update id="updateuser" parameterType="com.visa.kigen.model.UpdateModel" useGeneratedKeys="true" keyProperty="id">
+        UPDATE b_visa SET username = #{username},visa=#{visa},memo=#{memo} WHERE id = #{id}
+    </update>
+    <select id="selectuser" resultType="com.visa.kigen.model.UpdateModel">
+        SELECT * FROM b_visa WHERE id=#{id}
+    </select>
+</mapper>

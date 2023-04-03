@@ -1,5 +1,8 @@
 package com.visa.kigen.service;
 
-public interface HomeService {
+import java.util.List;
 
+import com.visa.kigen.model.HomeModel;
+public interface HomeService {
+	public List<HomeModel> selectAll(HomeModel homeModel);
 }

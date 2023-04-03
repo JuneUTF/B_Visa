@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/style.css">
-    <title>ビザ管理システム ホームサイト</title>
+    <title>ビザ管理システム 削除サイト</title>
 </head>
 <body>
     <div class="notification update">
-    <h3>ビザ管理システム Bチーム<h3>
+    <h3>ビザ管理システム 削除サイト</h3>
         <div class="error">
         <div class="success" th:if="${success}">
           <span>○</span><span th:text="${success}"></span>
@@ -17,38 +17,40 @@
         <div class="warning" th:if="${warning}">
           <span>❢</span><span th:text="${warning}"></span>
         </div>
+        </div>
+      <div th:if="${showa}">
+      	<a class="a_home" th:href="@{/home}">ホーム</a>
+      <a class="a_new" th:href="@{/register}">新規</a>
       </div>
     </div>
-      <div class="home">
+
+      <div class="home" th:if="${user}" th:each="user : ${user}">
         <table>
-          <caption>ビザ管理システム</caption>
-          <a class="shinki" th:href="@{/register}">新規</a>
-          
+          <caption>ビザ管理システム</caption>  
           <thead>
             <tr>
               <td>ID</td>
               <td>名前</td>
               <td>ビザ期限</td>
-              <td>残り</td>
                <td>メモ帳</td>
-              <td>行動</td>
             </tr>
           </thead>
-          <tbody th:each="user : ${user}">
-            <tr th:style="${user.color ==0 ? 'background-color: #f4c2c2;' : (user.color == 1? 'background-color: #f4f7cc;' : 'background-color: #c5f4c2;')}">
+          <tbody>
+            <tr >
               <td th:text="${user.id}"></td>
               <td th:text="${user.username}"></td>
               <td th:text="${user.visa}"></td>
-              <td th:text="${user.remday}" ></td>
               <td th:text="${user.memo}" ></td>
-              <td>
-                <a class="button-1" th:href="@{/update/{id}(id=${user.id})}">更新</a>
-                <a class="button-2" th:href="@{/delete/{id}(id=${user.id})}">削除</a>
-              </td>
             </tr>
           </tbody>
         
         </table>
+        <form th:action="@{/delete/{id}(id=${user.id})}" method="post" class="delete">
+  		<p><span th:text=${user.username}></span>の情報が削除しますか？</p>
+  			<a class="a_home" th:href="@{/home}">ホーム戻り</a>
+  			<a class="a_home" th:href="@{/update/{id} (id=${user.id})}">更新</a>
+  			<button type="submit">決定</button>
+</form>
     </div>
 </body>
 </html>

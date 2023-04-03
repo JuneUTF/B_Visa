@@ -1,5 +1,7 @@
 package com.visa.kigen.service;
 
-public interface RegressionService {
+import com.visa.kigen.model.RegressionModel;
 
+public interface RegressionService {
+	public int insert(RegressionModel regressionModel);
 }
