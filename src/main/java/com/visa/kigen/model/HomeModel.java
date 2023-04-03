@@ -13,6 +13,12 @@ public class HomeModel implements Serializable {
     private int color;
     private String memo;
 
+    private String search;
+    private String searchkey;
+    private int searchid;
+    private String searchuser;
+    
+
     public HomeModel() {
     }
 }

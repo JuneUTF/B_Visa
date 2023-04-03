@@ -10,4 +10,6 @@ import com.visa.kigen.model.HomeModel;
 @Mapper
 public interface HomeMapper {
 	List<HomeModel> selectAll(HomeModel homeModel);
+	List<HomeModel> searchuser(HomeModel homeModel);
+	List<HomeModel> searchid(HomeModel homeModel);
 }

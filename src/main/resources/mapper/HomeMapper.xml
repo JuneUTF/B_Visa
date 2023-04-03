@@ -7,4 +7,10 @@
     <select id="selectAll" resultType="com.visa.kigen.model.HomeModel">
         SELECT * FROM b_visa;
     </select>
+    <select id="searchuser" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa where username = #{searchuser};
+    </select>
+    <select id="searchid" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa where id = #{searchid};
+    </select>
 </mapper>

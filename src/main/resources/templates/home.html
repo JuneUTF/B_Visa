@@ -22,15 +22,23 @@
       <div class="home">
         <table>
           <caption>ビザ管理システム</caption>
+          <form action="/search" method="get" class="search">
+	<select name="search" id="">
+		<option value="id">社員コード</option>
+		<option value="username">名前</option>
+	</select>
+	<input type="text" name="searchkey">
+	<button type="submit">検索</button>
+</form>
           <a class="shinki" th:href="@{/register}">新規</a>
           
           <thead>
             <tr>
-              <td>ID</td>
+              <td>社員コード</td>
               <td>名前</td>
               <td>ビザ期限</td>
               <td>残り</td>
-               <td>メモ帳</td>
+               <td>備考</td>
               <td>行動</td>
             </tr>
           </thead>
