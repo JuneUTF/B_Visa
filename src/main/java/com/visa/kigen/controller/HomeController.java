@@ -23,27 +23,43 @@ public class HomeController {
 	public String index() {
 		return "redirect:home";
 	}
+	
 	@GetMapping("/home")
 	public String home(Model model,HomeModel homeModel) {
 		List<HomeModel> list = homeService.selectAll(homeModel);
 		DaySercive nokori = new DaySercive();
+		
 		list.forEach(e -> {
+			  
 			Long rem = nokori.remday(e.getVisa());
+			long years = rem / 365;
+			long remainingDays = rem % 365;
+	       	int months = (int) (remainingDays / 30.44);
+	       	int days = (int) (remainingDays % 30.44);
 			String remnew = Long.toString(rem);
-			if(rem>0) {
-				remnew +="日";
+			 if (rem >= 365) {
+				String remaining = String.format(" %d 年 %d 月 %d 日", years, months, days);
+				remnew =remaining;
+				e.setColor(2);
+			}else if(rem >= 30.44){
+				String remaining = String.format(" %d 月 %d 日",  months, days);
+				remnew =remaining;
 				e.setColor(2);
 			}else if (rem==0) {
 				remnew ="本日に期限切れ";
-				e.setColor(1);
-			}else {
+				e.setColor(0);
+			}else if (rem < -1){
 				remnew = remnew.substring(1);
 				remnew +="日前に期限切れ";
 				e.setColor(0);
+			}else if(rem <30.44 ){
+				remnew +="日";
+				e.setColor(1);
 			}
+			
 				    e.setRemday(remnew);
 				});
-
+		
 		model.addAttribute("user",list);
 		return "home";
 	}

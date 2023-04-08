@@ -7,4 +7,5 @@ public interface HomeService {
 	public List<HomeModel> selectAll(HomeModel homeModel);
 	public List<HomeModel> searchuser(HomeModel homeModel);
 	public List<HomeModel> searchid(HomeModel homeModel);
+	public List<HomeModel> selectid(HomeModel homeModel);
 }

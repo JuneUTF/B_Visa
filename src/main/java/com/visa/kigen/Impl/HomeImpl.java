@@ -25,4 +25,8 @@ public class HomeImpl implements HomeService {
  public  List<HomeModel> searchid(HomeModel homeModel){
 	 return mapper.searchid(homeModel);
  }
+ @Override
+ public  List<HomeModel> selectid(HomeModel homeModel){
+	 return mapper.selectAll(homeModel);
+ }
 }
