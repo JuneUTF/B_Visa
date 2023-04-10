@@ -57,9 +57,11 @@ public class HomeController {
 				e.setColor(2);
 			} if (days>0) {
 				remnew +=(days+"日");
-				e.setColor(2);
 			}else if (days==0){
 				remnew +="本日に期限切れ";
+				e.setColor(1);
+			}
+			if( years ==0 && months <1){
 				e.setColor(1);
 			}
 			if(remday<0) {
