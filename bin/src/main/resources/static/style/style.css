@@ -223,12 +223,3 @@ table {
 	background-color: #d16666;
 }
   
-#cal1, #cal2{
-	color: black;
-}
-#cal1:hover{
-	color: rgb(0, 128, 255);
-}
-#cal2:hover{
-	color: rgb(0, 128, 255);
-}

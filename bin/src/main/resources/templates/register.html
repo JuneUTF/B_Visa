@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Visa管理システム 登録データトサイト</title>
+</head>
+<body>
+    <div class="update">
+        <h1>登録データトサイト</h1>
+        <div class="error">
+        <div class="success" th:if="${success}">
+          <span>○</span><span th:text="${success}"></span>
+        </div>
+        <div class="warning" th:if="${warning}">
+          <span>❢</span><span th:text="${warning}"></span>
+        </div>
+      </div>
+
+        <hr>
+        <form action="register" method="post" id="update">
+            <p>名前：</p>
+    		<input type="text"  placeholder="名前を入力してください" name="username">
+    		<p>Visa期限：</p>
+    		<input type="date" id="today" value="" name="visa">
+    		<p>メモ帳：</p>
+    		<input type="text" placeholder="メモを入力してください" name="memo">
+    		<a class="a_home" th:href="@{/user}">ホーム</a>
+            <button type="submit">決定</button>
+           </form>
+    </div>
+</body>
+<script src="JavaScript/today.js"></script>
+</html>
