@@ -18,6 +18,10 @@ public class HomeImpl implements HomeService {
 	 return mapper.selectAll(homeModel);
  }
  @Override
+ public List<HomeModel> selectAllAZ(HomeModel homeModel){
+	 return mapper.selectAllAZ(homeModel);
+ }
+ @Override
  public  List<HomeModel> searchuser(HomeModel homeModel){
 	 return mapper.searchuser(homeModel);
  }
@@ -28,5 +32,13 @@ public class HomeImpl implements HomeService {
  @Override
  public  List<HomeModel> selectid(HomeModel homeModel){
 	 return mapper.selectAll(homeModel);
+ }
+ @Override
+ public  List<HomeModel> selectAllDaysAZ(HomeModel homeModel){
+	 return mapper.selectAllDaysAZ(homeModel);
+ }
+ @Override
+ public  List<HomeModel> selectAllDaysZA(HomeModel homeModel){
+	 return mapper.selectAllDaysZA(homeModel);
  }
 }

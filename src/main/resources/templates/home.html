@@ -30,18 +30,28 @@
 	<input type="text" name="searchkey">
 	<button type="submit">検索</button>
 </form>
-          <a class="shinki" th:href="@{/register}">新規</a>
-          
+          <a class="shinki" th:href="@{/register}">新規</a>      
           <thead>
-            <tr>
               <td>社員コード</td>
               <td>名前</td>
               <td>ビザ期限</td>
               <td>残り</td>
                <td>備考</td>
               <td>行動</td>
+            </thead>
+            <tr>
+          		<td>
+          				<a class="btn-a" th:href="@{/home}">大順</a>
+          				<a class="btn-a" th:href="@{/homeAZ}">小順</a>
+          		</td>
+          		<td></td><td></td>
+            <td>
+            <a class="btn-a" th:href="@{/visaAZ}">大順</a>
+          <a class="btn-a" th:href="@{/visaZA}">小順</a>
+            </td>
             </tr>
-          </thead>
+            
+
           <tbody th:each="user : ${user}">
             <tr th:style="${user.color ==0 ? 'background-color: #f4c2c2;' : (user.color == 1? 'background-color: #f4f7cc;' : 'background-color: #c5f4c2;')}">
               <td th:text="${user.id}"></td>

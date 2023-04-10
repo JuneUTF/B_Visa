@@ -5,14 +5,18 @@
 <mapper namespace="com.visa.kigen.mapper.HomeMapper">
  
     <select id="selectAll" resultType="com.visa.kigen.model.HomeModel">
-        SELECT * FROM b_visa ORDER BY "id" DESC;
+        SELECT * FROM b_visa ORDER BY id DESC;
     </select>
-    <select id="searchuser" resultType="com.visa.kigen.model.HomeModel">
-        SELECT * FROM b_visa where username = #{searchuser};
+     <select id="selectAllAZ" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa ORDER BY id ASC;
     </select>
-    <select id="searchid" resultType="com.visa.kigen.model.HomeModel">
-        SELECT * FROM b_visa where id = #{searchid};
+    <select id="selectAllDaysAZ" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa ORDER BY visa ASC;
     </select>
+    <select id="selectAllDaysZA" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa ORDER BY visa  DESC;
+    </select>
+    
    
    
 </mapper>
