@@ -23,9 +23,12 @@ public class HomeController {
 	HomeService homeService;
 	@GetMapping("/")
 	public String index() {
-		return "redirect:home";
+		return "login";
 	}
-	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 	@GetMapping("/home")
 	public String home(Model model,HomeModel homeModel) {
 		List<HomeModel> list = homeService.selectAll(homeModel);
@@ -57,7 +60,7 @@ public class HomeController {
 				e.setColor(2);
 			} if (days>0) {
 				remnew +=(days+"日");
-			}else if (days==0){
+			}else if (years==0 && months==0 && days==0){
 				remnew +="本日に期限切れ";
 				e.setColor(1);
 			}
@@ -121,43 +124,48 @@ public class HomeController {
 		return "home";
 	}
 	@GetMapping("/search")
-	 public String search(Model model, HomeModel homeModel) {
-		List<HomeModel> list = new ArrayList<>();
-		if(homeModel.getSearch().equals("id")) {
-			try {
-				int newid;
-				newid = Integer.parseInt(homeModel.getSearchkey());
-			    homeModel.setSearchid(newid);
-				list.addAll(homeService.searchid(homeModel));
-			} catch (NumberFormatException e) {
-				model.addAttribute("warning","番号として入力してください。");
-			}
-		}else {
-			homeModel.setSearchuser(homeModel.getSearchkey());
-			list.addAll(homeService.searchuser(homeModel));
-		}
-		
-		DaySercive nokori = new DaySercive();
-		list.forEach(e -> {
-			Long rem = nokori.remday(e.getVisa());
-			String remnew = Long.toString(rem);
-			if(rem>0) {
-				remnew +="日";
-				e.setColor(2);
-			}else if (rem==0) {
-				remnew ="本日に期限切れ";
-				e.setColor(1);
-			}else {
-				remnew = remnew.substring(1);
-				remnew +="日前に期限切れ";
-				e.setColor(0);
-			}
-				    e.setRemday(remnew);
-				});
+	  public String search(Model model, HomeModel homeModel) {
+	  List<HomeModel> list = new ArrayList<>();
+	  if(homeModel.getSearch().equals("id")) {
+	  try {
+	  int newid;
+	  newid = Integer.parseInt(homeModel.getSearchkey());
+	  homeModel.setSearchid(newid);
+	  list.addAll(homeService.searchid(homeModel));
+	  } catch (NumberFormatException e) {
+	  model.addAttribute("warning","番号として入力してください。");
+	  }
+	  //ここでビザ番号のSEARCH文入れた
+	  } else if (homeModel.getSearch().equals("visanumber")) {
+	  homeModel.setSearchvisanumber(homeModel.getSearchkey());
+	  list.addAll(homeService.searchvisanumber(homeModel));
+	  } else {
+	  homeModel.setSearchuser(homeModel.getSearchkey());
+	  list.addAll(homeService.searchuser(homeModel));
+	  }
+	  
+	  
+	  DaySercive nokori = new DaySercive();
+	  list.forEach(e -> {
+	   Long rem = nokori.remday(e.getVisa());
+	   String remnew = Long.toString(rem);
+	   if(rem>0) {
+	    remnew +="日";
+	    e.setColor(2);
+	   }else if (rem==0) {
+	    remnew ="本日に期限切れ";
+	    e.setColor(1);
+	   }else {
+	    remnew = remnew.substring(1);
+	    remnew +="日前に期限切れ";
+	    e.setColor(0);
+	   }
+	        e.setRemday(remnew);
+	    });
 
-		model.addAttribute("user",list);
-		return "home";
-	}
+	  model.addAttribute("user",list);
+	  return "home";
+	 }
 	
 //	get visa a-z
 	@GetMapping("/visaAZ")
@@ -207,7 +215,7 @@ public class HomeController {
 		return "home";
 	}
 	
-//	get visa z-a
+//	get visa z-a	
 	@GetMapping("/visaZA")
 	public String visaZA(Model model,HomeModel homeModel) {
 		List<HomeModel> list = homeService.selectAllDaysZA(homeModel);

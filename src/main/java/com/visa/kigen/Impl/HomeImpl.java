@@ -41,4 +41,8 @@ public class HomeImpl implements HomeService {
  public  List<HomeModel> selectAllDaysZA(HomeModel homeModel){
 	 return mapper.selectAllDaysZA(homeModel);
  }
+ @Override
+ public  List<HomeModel> searchvisanumber(HomeModel homeModel){
+  return mapper.searchvisanumber(homeModel);
+ }
 }

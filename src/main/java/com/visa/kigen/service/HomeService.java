@@ -11,4 +11,6 @@ public interface HomeService {
 	public List<HomeModel> selectid(HomeModel homeModel);
 	List<HomeModel> selectAllDaysAZ (HomeModel homeModel);
 	List<HomeModel> selectAllDaysZA (HomeModel homeModel);
+	List<HomeModel> searchvisanumber (HomeModel homeModel);
+
 }

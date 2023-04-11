@@ -12,11 +12,12 @@ public class HomeModel implements Serializable {
     private String remday;
     private int color;
     private String memo;
-
+    private String visanumber;
     private String search;
     private String searchkey;
     private int searchid;
     private String searchuser;
+    private String searchvisanumber;
     
 
     public HomeModel() {

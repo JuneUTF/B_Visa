@@ -17,6 +17,13 @@
         SELECT * FROM b_visa ORDER BY visa  DESC;
     </select>
     
-   
-   
+       <select id="selectuser" resultType="com.visa.kigen.model.UpdateModel">
+        SELECT * FROM b_visa WHERE id=#{id}
+    </select>
+        <select id="searchid" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa where id = #{searchid};
+    </select>
+   <select id="searchvisanumber" resultType="com.visa.kigen.model.HomeModel">
+        SELECT * FROM b_visa where visanumber = #{searchvisanumber};
+    </select>
 </mapper>

@@ -22,12 +22,16 @@
         <hr>
         <form action="register" method="post" id="update">
             <p>名前：</p>
-    		<input type="text"  placeholder="名前を入力してください" name="username">
-    		<p>Visa期限：</p>
-    		<input type="date" id="today" value="" name="visa">
-    		<p>メモ帳：</p>
-    		<input type="text" placeholder="メモを入力してください" name="memo">
-    		<a class="a_home" th:href="@{/user}">ホーム</a>
+      <input type="text"  placeholder="名前を入力してください" name="username">
+      <p>パスワード</p>
+      <input type="text"  placeholder="パスワードを入力してください" name="password">
+      <p>Visa期限：</p>
+      <input type="date" id="today" value="" name="visa">
+      <p>在留カード番号</p>
+      <input type="text"  placeholder="在留カード番号を入力してください" name="visanumber">
+      <p>メモ帳：</p>
+      <input type="text" placeholder="メモを入力してください" name="memo">
+      <a class="a_home" th:href="@{/home}">ホーム</a>
             <button type="submit">決定</button>
            </form>
     </div>
